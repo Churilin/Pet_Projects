@@ -1,0 +1,25 @@
+
+:root {
+    --primary-color: #2c3e50;      /* Темно-синий для заголовков */
+    --secondary-color: #3498db;    /* Голубой для акцентов */
+    --text-color: #333;            /* Основной цвет текста */
+    --bg-color: #f9f9f9;           /* Цвет фона */
+    --card-bg: white;              /* Фон для карточек/секций */
+    --border-radius: 8px;          /* Скругление углов */
+    --box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* Тень */
+}
+
+/* Сброс базовых отступов и box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Базовые стили для body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
