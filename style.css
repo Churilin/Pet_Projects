@@ -144,3 +144,38 @@ section h2 {
     background-color: var(--primary-color);
     transform: translateY(-3px) scale(1.05);
 }
+
+/* Секция "Контакты" */
+#contacts {
+    text-align: center;
+}
+
+#contacts p {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+#contacts a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+#contacts a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Футер */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+footer p {
+    margin: 0;
+}
