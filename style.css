@@ -179,3 +179,50 @@ footer {
 footer p {
     margin: 0;
 }
+
+/* Адаптация для планшетов */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    #about h1 {
+        font-size: 2rem;
+    }
+    
+    #about h2 {
+        font-size: 1.2rem;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+    
+    section {
+        padding: 1.5rem;
+    }
+    
+    #skills ul {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
+
+/* Адаптация для мобильных телефонов */
+@media (max-width: 480px) {
+    #about img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    #skills ul li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    #contacts p {
+        font-size: 1rem;
+        word-break: break-all;  /* Чтобы длинные ссылки не ломали верстку */
+    }
+}
