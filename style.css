@@ -226,3 +226,36 @@ footer p {
         word-break: break-all;  /* Чтобы длинные ссылки не ломали верстку */
     }
 }
+
+/* Плавная прокрутка по якорям */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Стилизация скроллбара (опционально, работает не во всех браузерах) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Эффект при наведении на секции */
+section {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
