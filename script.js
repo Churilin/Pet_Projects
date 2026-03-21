@@ -33,3 +33,42 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // === СЧЕТЧИК ПОСЕЩЕНИЙ ===
+    function updateVisitCounter() {
+        // Получаем текущее значение счетчика из localStorage
+        let visits = localStorage.getItem('visitCount');
+        
+        if (visits === null) {
+            // Первое посещение
+            visits = 1;
+        } else {
+            // Преобразуем строку в число и увеличиваем
+            visits = parseInt(visits) + 1;
+        }
+        
+        // Сохраняем новое значение
+        localStorage.setItem('visitCount', visits);
+        
+        // Создаем или обновляем элемент на странице
+        let counterEl = document.getElementById('visitCounter');
+        if (!counterEl) {
+            // Если элемента нет, создаем его в футере
+            const footer = document.querySelector('footer');
+            counterEl = document.createElement('p');
+            counterEl.id = 'visitCounter';
+            counterEl.style.marginTop = '0.5rem';
+            counterEl.style.fontSize = '0.9rem';
+            counterEl.style.opacity = '0.8';
+            footer.appendChild(counterEl);
+        }
+        
+        counterEl.textContent = `Вы посетили этот сайт ${visits} раз(а)`;
+    }
+    
+    // Вызываем функцию
+    updateVisitCounter();
+    
+});
