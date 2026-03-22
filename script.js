@@ -72,3 +72,30 @@ document.addEventListener('DOMContentLoaded', function() {
     updateVisitCounter();
     
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // === ПЕРЕКЛЮЧЕНИЕ ТЕМЫ ===
+    const themeToggle = document.getElementById('themeToggle');
+    
+    // Проверяем сохраненную тему
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        themeToggle.textContent = '☀️ Светлая тема';
+    }
+    
+    themeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-theme');
+        
+        // Меняем текст кнопки
+        if (document.body.classList.contains('dark-theme')) {
+            themeToggle.textContent = '☀️ Светлая тема';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            themeToggle.textContent = '🌙 Темная тема';
+            localStorage.setItem('theme', 'light');
+        }
+    });
+    
+});
