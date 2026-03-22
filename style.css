@@ -295,3 +295,50 @@ section:hover {
 .greet-message.show {
     opacity: 1;
 }
+
+.theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    .theme-toggle {
+        position: static;
+        margin: 1rem auto;
+        display: block;
+    }
+}
+
+/* Темная тема */
+body.dark-theme {
+    --primary-color: #2d3436;
+    --secondary-color: #0984e3;
+    --text-color: #dfe6e9;
+    --bg-color: #2c3e50;
+    --card-bg: #34495e;
+    --box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+body.dark-theme section {
+    background-color: var(--card-bg);
+}
+
+body.dark-theme #skills ul li {
+    background-color: #00b894;
+    color: white;
+}
