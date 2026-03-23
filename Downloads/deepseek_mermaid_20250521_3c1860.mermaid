@@ -1,0 +1,41 @@
+erDiagram
+    CUSTOMERS ||--o{ ORDERS : "1:N"
+    PRODUCTS ||--o{ ORDERS : "1:N"
+    TRUCKS ||--o{ ORDERS : "1:N"
+    DRIVERS ||--o{ ORDERS : "1:N"
+
+    CUSTOMERS {
+        int Id PK
+        string CompanyName
+        string Address
+        string Phone
+    }
+
+    PRODUCTS {
+        int Id PK
+        string Name
+        decimal Weight
+        decimal Volume
+    }
+
+    TRUCKS {
+        int Id PK
+        string Brand
+        string LicensePlate
+        decimal LoadCapacity
+    }
+
+    DRIVERS {
+        int Id PK
+        string FullName
+        string Phone
+    }
+
+    ORDERS {
+        int Id PK
+        int CustomerId FK
+        int ProductId FK
+        int TruckId FK
+        int DriverId FK
+        DateTime CreationDate
+    }
