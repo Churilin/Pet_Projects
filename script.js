@@ -99,3 +99,45 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // === АНИМАЦИЯ ПРИ ПРОКРУТКЕ ===
+    const skillItems = document.querySelectorAll('#skills ul li');
+    
+    // Функция проверки видимости элемента
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+    
+    // Функция для анимации элементов
+    function animateSkills() {
+        skillItems.forEach((item, index) => {
+            if (isElementInViewport(item)) {
+                // Добавляем задержку для каждого элемента
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, index * 100);
+            }
+        });
+    }
+    
+    // Устанавливаем начальные стили
+    skillItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+    
+    // Запускаем анимацию при загрузке и прокрутке
+    animateSkills();
+    window.addEventListener('scroll', animateSkills);
+    
+});
