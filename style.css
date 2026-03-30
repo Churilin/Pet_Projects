@@ -343,6 +343,8 @@ body.dark-theme #skills ul li {
     color: white;
 }
 
+/* Форма обратной связи */
+
 .contact-form {
     max-width: 500px;
     margin: 2rem auto;
