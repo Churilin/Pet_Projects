@@ -141,3 +141,65 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', animateSkills);
     
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // === ФОРМА ОБРАТНОЙ СВЯЗИ ===
+    const feedbackForm = document.getElementById('feedbackForm');
+    const formMessage = document.getElementById('formMessage');
+    
+    if (feedbackForm) {
+        feedbackForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Отменяем реальную отправку
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Простейшая валидация
+            if (name.length < 2) {
+                showFormMessage('Имя должно содержать минимум 2 символа', 'error');
+                return;
+            }
+            
+            if (!email.includes('@') || !email.includes('.')) {
+                showFormMessage('Введите корректный email', 'error');
+                return;
+            }
+            
+            if (message.length < 10) {
+                showFormMessage('Сообщение должно содержать минимум 10 символов', 'error');
+                return;
+            }
+            
+            // Имитация отправки
+            showFormMessage('Спасибо! Ваше сообщение отправлено (демо-режим)', 'success');
+            
+            // Очищаем форму
+            feedbackForm.reset();
+            
+            // Сохраняем в localStorage историю сообщений
+            saveMessageToHistory({name, email, message, date: new Date().toLocaleString()});
+        });
+    }
+    
+    function showFormMessage(text, type) {
+        formMessage.textContent = text;
+        formMessage.className = type === 'error' ? 'error-message' : 'success-message';
+        formMessage.style.backgroundColor = type === 'error' ? '#f8d7da' : '#d4edda';
+        formMessage.style.color = type === 'error' ? '#721c24' : '#155724';
+        
+        setTimeout(() => {
+            formMessage.textContent = '';
+            formMessage.style.backgroundColor = '';
+            formMessage.style.color = '';
+        }, 3000);
+    }
+    
+    function saveMessageToHistory(messageData) {
+        let history = JSON.parse(localStorage.getItem('messageHistory')) || [];
+        history.push(messageData);
+        localStorage.setItem('messageHistory', JSON.stringify(history));
+    }
+    
+});
