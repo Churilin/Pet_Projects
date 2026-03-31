@@ -203,3 +203,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // === ПРОГРЕСС-БАР ПРОКРУТКИ ===
+    const progressBar = document.getElementById('progressBar');
+    
+    window.addEventListener('scroll', function() {
+        const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollTop = window.scrollY;
+        const progress = (scrollTop / windowHeight) * 100;
+        progressBar.style.width = progress + '%';
+    });
+    
+});
