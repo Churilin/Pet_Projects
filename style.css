@@ -400,3 +400,15 @@ body.dark-theme #skills ul li {
     border-radius: var(--border-radius);
     text-align: center;
 }
+
+/* Прогресс-бар */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary-color), #00b894);
+    width: 0%;
+    z-index: 1000;
+    transition: width 0.1s ease;
+}
