@@ -217,3 +217,91 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
 });
+
+// Данные проектов
+const projectsData = [
+    {
+        id: 1,
+        title: "Персональный сайт-визитка",
+        description: "Мой первый сайт с адаптивным дизайном и интерактивными элементами",
+        image: "https://via.placeholder.com/400x200/3498db/ffffff?text=Personal+Site",
+        tech: ["HTML", "CSS", "JavaScript"],
+        category: "html-css",
+        demoLink: "#",
+        codeLink: "https://github.com/yourusername/personal-site"
+    },
+    {
+        id: 2,
+        title: "To-Do List приложение",
+        description: "Управление задачами с сохранением в localStorage",
+        image: "https://via.placeholder.com/400x200/2ecc71/ffffff?text=Todo+App",
+        tech: ["HTML", "CSS", "JavaScript", "LocalStorage"],
+        category: "javascript",
+        demoLink: "#",
+        codeLink: "https://github.com/yourusername/todo-app"
+    },
+    {
+        id: 3,
+        title: "Погодное приложение",
+        description: "Отображение погоды с использованием OpenWeatherMap API",
+        image: "https://via.placeholder.com/400x200/e74c3c/ffffff?text=Weather+App",
+        tech: ["JavaScript", "API", "Async/Await"],
+        category: "api",
+        demoLink: "#",
+        codeLink: "https://github.com/yourusername/weather-app"
+    },
+    {
+        id: 4,
+        title: "Калькулятор валют",
+        description: "Конвертер валют с актуальными курсами",
+        image: "https://via.placeholder.com/400x200/f39c12/ffffff?text=Currency+Converter",
+        tech: ["JavaScript", "API", "Fetch"],
+        category: "api",
+        demoLink: "#",
+        codeLink: "https://github.com/yourusername/currency-converter"
+    }
+];
+
+// Функция отображения проектов
+function displayProjects(category = 'all') {
+    const projectsGrid = document.getElementById('projectsGrid');
+    const filteredProjects = category === 'all' 
+        ? projectsData 
+        : projectsData.filter(project => project.category === category);
+    
+    projectsGrid.innerHTML = filteredProjects.map(project => `
+        <div class="project-card" data-category="${project.category}">
+            <div class="project-image" style="background-image: url('${project.image}')">
+                <div class="project-overlay">
+                    <div class="project-links">
+                        <a href="${project.demoLink}" class="project-link" target="_blank">Демо</a>
+                        <a href="${project.codeLink}" class="project-link" target="_blank">Код</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">${project.title}</h3>
+                <p class="project-description">${project.description}</p>
+                <div class="project-tech">
+                    ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Фильтрация проектов
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Обновляем активную кнопку
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Фильтруем проекты
+        const category = btn.dataset.category;
+        displayProjects(category);
+    });
+});
+
+// Отображаем проекты при загрузке
+displayProjects();
