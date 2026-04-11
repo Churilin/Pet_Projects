@@ -549,3 +549,64 @@ body.dark-theme #skills ul li {
     border-radius: 15px;
     font-size: 0.8rem;
 }
+
+/* Секция с цитатой */
+#quote-section {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    margin: 2rem 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.quote-container {
+    padding: 3rem;
+    text-align: center;
+    color: white;
+}
+
+.quote-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.quote-text {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    font-style: italic;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.quote-author {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+.new-quote-btn {
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    border: 2px solid white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.new-quote-btn:hover {
+    background-color: white;
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.quote-text, .quote-author {
+    animation: fadeIn 0.5s ease;
+}
