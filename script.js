@@ -305,3 +305,52 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 
 // Отображаем проекты при загрузке
 displayProjects();
+
+// Коллекция цитат (локальная, на случай если API недоступен)
+const localQuotes = [
+    { text: "Код — это поэзия, которую понимает компьютер.", author: "Аноним" },
+    { text: "Лучшее время для посадки дерева было 20 лет назад. Следующее лучшее время — сегодня.", author: "Китайская пословица" },
+    { text: "Простота — это высшая сложность.", author: "Леонардо да Винчи" },
+    { text: "Не бойтесь совершенства — вам его не достичь.", author: "Сальвадор Дали" },
+    { text: "Программирование — это искусство рассказать компьютеру, что делать.", author: "Дональд Кнут" }
+];
+
+// Функция получения цитаты из API
+async function getQuote() {
+    const quoteText = document.getElementById('dailyQuote');
+    const quoteAuthor = document.getElementById('quoteAuthor');
+    
+    // Анимация загрузки
+    quoteText.style.opacity = '0.5';
+    quoteAuthor.style.opacity = '0.5';
+    
+    try {
+        // Пробуем получить цитату из API
+        const response = await fetch('https://api.quotable.io/random');
+        if (response.ok) {
+            const data = await response.json();
+            quoteText.textContent = `"${data.content}"`;
+            quoteAuthor.textContent = `— ${data.author}`;
+        } else {
+            throw new Error('API недоступно');
+        }
+    } catch (error) {
+        // Используем локальную коллекцию
+        console.log('Используем локальные цитаты');
+        const randomQuote = localQuotes[Math.floor(Math.random() * localQuotes.length)];
+        quoteText.textContent = `"${randomQuote.text}"`;
+        quoteAuthor.textContent = `— ${randomQuote.author}`;
+    }
+    
+    // Возвращаем opacity
+    setTimeout(() => {
+        quoteText.style.opacity = '1';
+        quoteAuthor.style.opacity = '1';
+    }, 100);
+}
+
+// Загружаем цитату при старте
+getQuote();
+
+// Обработчик кнопки "Новая цитата"
+document.getElementById('newQuoteBtn').addEventListener('click', getQuote);
