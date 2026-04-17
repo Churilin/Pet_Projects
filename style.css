@@ -610,3 +610,48 @@ body.dark-theme #skills ul li {
 .quote-text, .quote-author {
     animation: fadeIn 0.5s ease;
 }
+
+/* Кнопка "Наверх" */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+
+.scroll-to-top:hover {
+    transform: scale(1.1);
+    background-color: var(--primary-color);
+}
+
+.scroll-to-top.show {
+    display: flex;
+    animation: fadeInUp 0.3s ease;
+}
+
+.scroll-progress {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    border: 3px solid var(--secondary-color);
+    border-top-color: transparent;
+    transform: rotate(0deg);
+    transition: transform 0.1s linear;
+    pointer-events: none;
+}
