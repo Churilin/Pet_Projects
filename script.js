@@ -354,3 +354,32 @@ getQuote();
 
 // Обработчик кнопки "Новая цитата"
 document.getElementById('newQuoteBtn').addEventListener('click', getQuote);
+
+// Кнопка "Наверх"
+const scrollBtn = document.getElementById('scrollToTop');
+const scrollProgress = document.querySelector('.scroll-progress');
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 360;
+    
+    // Показываем/скрываем кнопку
+    if (scrollTop > 300) {
+        scrollBtn.classList.add('show');
+    } else {
+        scrollBtn.classList.remove('show');
+    }
+    
+    // Обновляем прогресс
+    if (scrollProgress) {
+        scrollProgress.style.transform = `rotate(${scrollPercent}deg)`;
+    }
+});
+
+scrollBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
