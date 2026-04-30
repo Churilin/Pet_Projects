@@ -655,3 +655,59 @@ body.dark-theme #skills ul li {
     transition: transform 0.1s linear;
     pointer-events: none;
 }
+
+/* Умный поиск по сайту */
+.search-container {
+    position: relative;
+    max-width: 300px;
+    margin: 1rem auto;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e9ecef;
+    border-radius: 25px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 10px rgba(52,152,219,0.3);
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.search-results.show {
+    display: block;
+}
+
+.search-result-item {
+    padding: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.search-result-item:hover {
+    background-color: var(--bg-color);
+}
+
+.search-result-highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
