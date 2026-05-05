@@ -383,3 +383,8 @@ scrollBtn.addEventListener('click', () => {
         behavior: 'smooth'
     });
 });
+
+// Умный поиск
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+let searchTimeout;
