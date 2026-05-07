@@ -388,3 +388,24 @@ scrollBtn.addEventListener('click', () => {
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
 let searchTimeout;
+
+// Получаем весь текстовый контент страницы
+function getPageContent() {
+    const sections = document.querySelectorAll('section');
+    const content = [];
+    
+    sections.forEach(section => {
+        const title = section.querySelector('h2')?.textContent || '';
+        const text = section.innerText;
+        const id = section.id;
+        
+        content.push({
+            title: title,
+            text: text,
+            id: id,
+            element: section
+        });
+    });
+    
+    return content;
+}
