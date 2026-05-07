@@ -409,3 +409,33 @@ function getPageContent() {
     
     return content;
 }
+
+// Поиск по контенту
+function searchContent(query) {
+    if (!query.trim()) {
+        searchResults.classList.remove('show');
+        return [];
+    }
+    
+    const content = getPageContent();
+    const results = [];
+    const searchTerms = query.toLowerCase().split(' ');
+    
+    content.forEach(item => {
+        let relevance = 0;
+        searchTerms.forEach(term => {
+            if (item.title.toLowerCase().includes(term)) relevance += 3;
+            if (item.text.toLowerCase().includes(term)) relevance += 1;
+        });
+        
+        if (relevance > 0) {
+            results.push({
+                ...item,
+                relevance: relevance
+            });
+        }
+    });
+    
+    // Сортируем по релевантности
+    return results.sort((a, b) => b.relevance - a.relevance);
+}
