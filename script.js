@@ -439,3 +439,22 @@ function searchContent(query) {
     // Сортируем по релевантности
     return results.sort((a, b) => b.relevance - a.relevance);
 }
+
+// Отображение результатов
+function displaySearchResults(results) {
+    if (results.length === 0) {
+        searchResults.innerHTML = '<div class="search-result-item">Ничего не найдено</div>';
+        searchResults.classList.add('show');
+        return;
+    }
+    
+    searchResults.innerHTML = results.map(result => `
+        <div class="search-result-item" data-id="${result.id}">
+            <strong>${result.title || 'Без заголовка'}</strong>
+            <div style="font-size: 0.9rem; margin-top: 0.3rem;">
+                ${result.text.substring(0, 100)}...
+            </div>
+        </div>
+    `).join('');
+    
+    searchResults.classList.add('show');
