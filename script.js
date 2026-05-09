@@ -458,3 +458,17 @@ function displaySearchResults(results) {
     `).join('');
     
     searchResults.classList.add('show');
+
+    // Добавляем обработчики кликов
+    document.querySelectorAll('.search-result-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const id = item.dataset.id;
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                searchResults.classList.remove('show');
+                searchInput.value = '';
+            }
+        });
+    });
+} 
