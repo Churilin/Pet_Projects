@@ -482,3 +482,10 @@ searchInput.addEventListener('input', (e) => {
         displaySearchResults(results);
     }, 300);
 });
+
+// Закрываем результаты при клике вне
+document.addEventListener('click', (e) => {
+    if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.classList.remove('show');
+    }
+});
