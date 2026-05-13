@@ -472,3 +472,13 @@ function displaySearchResults(results) {
         });
     });
 } 
+
+// Обработка ввода с debounce
+searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+        const query = e.target.value;
+        const results = searchContent(query);
+        displaySearchResults(results);
+    }, 300);
+});
