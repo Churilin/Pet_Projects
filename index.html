@@ -28,6 +28,49 @@
             </div>
         </div>
 
+        <!-- Виджет 2: Таймер обратного отсчёта -->
+        <div class="widget-card">
+            <div class="widget-header">
+                <span class="widget-icon">⏰</span>
+                <h3>Обратный отсчёт</h3>
+            </div>
+            <div class="widget-content">
+                <div class="countdown-container">
+                    <div class="countdown-event">
+                        <select id="eventSelect" class="event-select">
+                            <option value="newyear">🎄 Новый год</option>
+                            <option value="birthday">🎂 Мой день рождения</option>
+                            <option value="custom">📅 Своя дата</option>
+                        </select>
+                    </div>
+                    <div id="customDateInput" class="custom-date" style="display: none;">
+                        <input type="date" id="customDate">
+                    </div>
+                    <div id="countdownDisplay" class="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">0</span>
+                            <span class="countdown-label">Дней</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">0</span>
+                            <span class="countdown-label">Часов</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="minutes">0</span>
+                            <span class="countdown-label">Минут</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="seconds">0</span>
+                            <span class="countdown-label">Секунд</span>
+                        </div>
+                    </div>
+                    <div id="eventMessage" class="event-message"></div>
+                </div>
+            </div>
+        </div>
+
+        
+
     <div class="progress-bar" id="progressBar"></div>
         <header>
             <nav>
