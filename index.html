@@ -69,7 +69,27 @@
             </div>
         </div>
 
-        
+          <!-- Виджет 3: Генератор цветов -->
+        <div class="widget-card">
+            <div class="widget-header">
+                <span class="widget-icon">🎨</span>
+                <h3>Генератор цветов</h3>
+            </div>
+            <div class="widget-content">
+                <div id="colorDisplay" class="color-display" style="background-color: #3498db;">
+                    <div class="color-info">
+                        <span id="hexCode">#3498db</span>
+                        <span id="rgbCode">rgb(52,152,219)</span>
+                    </div>
+                </div>
+                <button id="generateColorBtn" class="widget-btn">Случайный цвет 🎲</button>
+                <button id="copyHexBtn" class="widget-btn secondary">Копировать HEX 📋</button>
+                <div class="color-history" id="colorHistory">
+                    <h4>История цветов:</h4>
+                    <div class="history-colors" id="historyColors"></div>
+                </div>
+            </div>
+        </div>
 
     <div class="progress-bar" id="progressBar"></div>
         <header>
