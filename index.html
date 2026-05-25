@@ -91,6 +91,45 @@
             </div>
         </div>
 
+        <!-- Виджет 4: Трекер привычек -->
+        <div class="widget-card">
+            <div class="widget-header">
+                <span class="widget-icon">✅</span>
+                <h3>Трекер привычек</h3>
+            </div>
+            <div class="widget-content">
+                <div class="habits-list" id="habitsList">
+                    <div class="habit-item">
+                        <input type="checkbox" id="habit1">
+                        <label for="habit1">💪 Утренняя зарядка</label>
+                    </div>
+                    <div class="habit-item">
+                        <input type="checkbox" id="habit2">
+                        <label for="habit2">📚 Читать 30 минут</label>
+                    </div>
+                    <div class="habit-item">
+                        <input type="checkbox" id="habit3">
+                        <label for="habit3">💻 Практика кодинга 2 часа</label>
+                    </div>
+                    <div class="habit-item">
+                        <input type="checkbox" id="habit4">
+                        <label for="habit4">🚶 Прогулка на свежем воздухе</label>
+                    </div>
+                    <div class="habit-item">
+                        <input type="checkbox" id="habit5">
+                        <label for="habit5">💧 Выпить 2 литра воды</label>
+                    </div>
+                </div>
+                <div class="habit-stats">
+                    <div class="progress-bar">
+                        <div id="habitProgress" class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                    <div id="habitProgressText" class="progress-text">0/5 выполнено</div>
+                </div>
+                <button id="resetHabitsBtn" class="widget-btn small">Сбросить все 🔄</button>
+            </div>
+        </div>
+
     <div class="progress-bar" id="progressBar"></div>
         <header>
             <nav>
