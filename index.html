@@ -130,6 +130,32 @@
             </div>
         </div>
 
+        <!-- Виджет 5: Калькулятор BMI -->
+        <div class="widget-card">
+            <div class="widget-header">
+                <span class="widget-icon">⚖️</span>
+                <h3>Калькулятор BMI</h3>
+            </div>
+            <div class="widget-content">
+                <div class="bmi-inputs">
+                    <div class="input-group">
+                        <label>Вес (кг):</label>
+                        <input type="number" id="weight" placeholder="70" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label>Рост (см):</label>
+                        <input type="number" id="height" placeholder="170">
+                    </div>
+                    <button id="calculateBmiBtn" class="widget-btn">Рассчитать BMI 📊</button>
+                </div>
+                <div id="bmiResult" class="bmi-result" style="display: none;">
+                    <div class="bmi-value" id="bmiValue">0</div>
+                    <div class="bmi-category" id="bmiCategory"></div>
+                    <div class="bmi-info" id="bmiInfo"></div>
+                </div>
+            </div>
+        </div>
+
     <div class="progress-bar" id="progressBar"></div>
         <header>
             <nav>
