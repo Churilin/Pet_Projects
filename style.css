@@ -711,3 +711,50 @@ body.dark-theme #skills ul li {
     background-color: yellow;
     font-weight: bold;
 }
+
+/* Секция виджетов */
+#widgets-showcase {
+    background: linear-gradient(135deg, var(--bg-color) 0%, var(--card-bg) 100%);
+}
+
+.widgets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.widget-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease;
+}
+
+.widget-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.widget-header {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: white;
+}
+
+.widget-icon {
+    font-size: 1.8rem;
+}
+
+.widget-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.widget-content {
+    padding: 1.5rem;
+}
