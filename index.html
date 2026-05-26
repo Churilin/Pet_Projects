@@ -156,6 +156,44 @@
             </div>
         </div>
 
+         <!-- Виджет 6: Генератор паролей -->
+        <div class="widget-card">
+            <div class="widget-header">
+                <span class="widget-icon">🔐</span>
+                <h3>Генератор паролей</h3>
+            </div>
+            <div class="widget-content">
+                <div class="password-generator">
+                    <div class="password-display">
+                        <input type="text" id="generatedPassword" readonly placeholder="Нажмите генерировать">
+                        <button id="copyPasswordBtn" class="copy-btn" title="Копировать">📋</button>
+                    </div>
+                    <div class="password-options">
+                        <label>
+                            <input type="range" id="passwordLength" min="6" max="32" value="12">
+                            <span>Длина: <span id="lengthValue">12</span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="includeUppercase" checked> A-Z
+                        </label>
+                        <label>
+                            <input type="checkbox" id="includeLowercase" checked> a-z
+                        </label>
+                        <label>
+                            <input type="checkbox" id="includeNumbers" checked> 0-9
+                        </label>
+                        <label>
+                            <input type="checkbox" id="includeSymbols" checked> !@#$%
+                        </label>
+                    </div>
+                    <button id="generatePasswordBtn" class="widget-btn">Сгенерировать 🔑</button>
+                    <div id="passwordStrength" class="password-strength"></div>
+                </div>
+            </div>
+        </div>
+
+        
+
     <div class="progress-bar" id="progressBar"></div>
         <header>
             <nav>
