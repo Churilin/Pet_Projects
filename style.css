@@ -847,3 +847,86 @@ body.dark-theme #skills ul li {
     font-weight: bold;
     color: var(--secondary-color);
 }
+
+/* Генератор цветов */
+.color-display {
+    height: 150px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.color-info {
+    background: rgba(0,0,0,0.7);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    color: white;
+    text-align: center;
+}
+
+.color-info span {
+    display: block;
+    font-family: monospace;
+    margin: 0.2rem 0;
+}
+
+.widget-btn {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.5rem;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.widget-btn:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.widget-btn.secondary {
+    background: var(--primary-color);
+}
+
+.widget-btn.small {
+    width: auto;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+}
+
+.color-history {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.color-history h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.history-colors {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.history-color-item {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.history-color-item:hover {
+    transform: scale(1.1);
+    border-color: var(--secondary-color);
+}
