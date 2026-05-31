@@ -930,3 +930,57 @@ body.dark-theme #skills ul li {
     transform: scale(1.1);
     border-color: var(--secondary-color);
 }
+
+/* Трекер привычек */
+.habits-list {
+    margin-bottom: 1rem;
+}
+
+.habit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.6rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.habit-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.habit-item label {
+    flex: 1;
+    cursor: pointer;
+}
+
+.habit-item input:checked + label {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.habit-stats {
+    margin: 1rem 0;
+}
+
+.progress-bar {
+    height: 10px;
+    background: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--secondary-color), #00b894);
+    transition: width 0.3s ease;
+    border-radius: 5px;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
