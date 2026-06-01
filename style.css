@@ -984,3 +984,51 @@ body.dark-theme #skills ul li {
     font-size: 0.9rem;
     color: var(--text-color);
 }
+
+/* Калькулятор BMI */
+.bmi-inputs {
+    margin-bottom: 1rem;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.6rem;
+    border: 2px solid #e9ecef;
+    border-radius: var(--border-radius);
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.bmi-result {
+    text-align: center;
+    padding: 1rem;
+    background: var(--bg-color);
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+}
+
+.bmi-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.bmi-category {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+.bmi-info {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
