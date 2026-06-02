@@ -1081,3 +1081,21 @@ body.dark-theme #skills ul li {
     border-radius: var(--border-radius);
     font-size: 0.9rem;
 }
+
+/* Факты */
+.fact-container {
+    text-align: center;
+}
+
+.fact-display {
+    padding: 1rem;
+    background: var(--bg-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    line-height: 1.5;
+}
