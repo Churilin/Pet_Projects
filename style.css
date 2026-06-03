@@ -1099,3 +1099,18 @@ body.dark-theme #skills ul li {
     font-style: italic;
     line-height: 1.5;
 }
+
+/* Адаптация */
+@media (max-width: 768px) {
+    .widgets-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .countdown-number {
+        font-size: 1.2rem;
+    }
+    
+    .time {
+        font-size: 1.8rem;
+    }
+}
