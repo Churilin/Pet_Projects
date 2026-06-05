@@ -509,3 +509,27 @@ fadeElements.forEach(el => {
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     fadeObserver.observe(el);
 });
+
+// ========== ВИДЖЕТ 1: ЧАСЫ ==========
+function updateClock() {
+    const now = new Date();
+    const time = now.toLocaleTimeString('ru-RU', { hour12: false });
+    const date = now.toLocaleDateString('ru-RU', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    });
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    
+    const currentTimeEl = document.getElementById('currentTime');
+    const currentDateEl = document.getElementById('currentDate');
+    const timezoneInfoEl = document.getElementById('timezoneInfo');
+    
+    if (currentTimeEl) currentTimeEl.textContent = time;
+    if (currentDateEl) currentDateEl.textContent = date;
+    if (timezoneInfoEl) timezoneInfoEl.textContent = `Часовой пояс: ${timezone}`;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
