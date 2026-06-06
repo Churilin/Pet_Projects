@@ -533,3 +533,75 @@ function updateClock() {
 
 setInterval(updateClock, 1000);
 updateClock();
+
+// ========== ВИДЖЕТ 2: ТАЙМЕР ОБРАТНОГО ОТСЧЁТА ==========
+let countdownInterval;
+
+function updateCountdown(targetDate, eventName) {
+    const now = new Date();
+    const diff = targetDate - now;
+    
+    if (diff <= 0) {
+        document.getElementById('eventMessage').textContent = `${eventName} наступил! 🎉`;
+        return;
+    }
+    
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (86400000)) / (3600000));
+    const minutes = Math.floor((diff % 3600000) / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
+    
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+}
+
+function startCountdown() {
+    const eventSelect = document.getElementById('eventSelect');
+    const customDateInput = document.getElementById('customDate');
+    let targetDate;
+    let eventName;
+    
+    switch(eventSelect.value) {
+        case 'newyear':
+            targetDate = new Date(new Date().getFullYear() + 1, 0, 1);
+            eventName = 'Новый год';
+            break;
+        case 'birthday':
+            targetDate = new Date(new Date().getFullYear(), 5, 15); // Пример: 15 июня
+            eventName = 'Мой день рождения';
+            break;
+        case 'custom':
+            const customDate = new Date(customDateInput.value);
+            if (isNaN(customDate)) {
+                document.getElementById('eventMessage').textContent = 'Выберите дату!';
+                return;
+            }
+            targetDate = customDate;
+            eventName = 'Выбранное событие';
+            break;
+    }
+    
+    if (countdownInterval) clearInterval(countdownInterval);
+    updateCountdown(targetDate, eventName);
+    countdownInterval = setInterval(() => updateCountdown(targetDate, eventName), 1000);
+}
+
+// Обработчики для таймера
+const eventSelect = document.getElementById('eventSelect');
+const customDateInput = document.getElementById('customDate');
+const customDateDiv = document.getElementById('customDateInput');
+
+if (eventSelect) {
+    eventSelect.addEventListener('change', () => {
+        customDateDiv.style.display = eventSelect.value === 'custom' ? 'block' : 'none';
+        startCountdown();
+    });
+}
+
+if (customDateInput) {
+    customDateInput.addEventListener('change', startCountdown);
+}
+
+startCountdown();
