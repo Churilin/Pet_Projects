@@ -605,3 +605,84 @@ if (customDateInput) {
 }
 
 startCountdown();
+
+// ========== ВИДЖЕТ 3: ГЕНЕРАТОР ЦВЕТОВ ==========
+let colorHistory = JSON.parse(localStorage.getItem('colorHistory')) || [];
+
+function generateRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function updateColorDisplay(color) {
+    const colorDisplay = document.getElementById('colorDisplay');
+    const hexCode = document.getElementById('hexCode');
+    const rgbCode = document.getElementById('rgbCode');
+    
+    colorDisplay.style.backgroundColor = color;
+    hexCode.textContent = color.toUpperCase();
+    
+    const r = parseInt(color.slice(1,3), 16);
+    const g = parseInt(color.slice(3,5), 16);
+    const b = parseInt(color.slice(5,7), 16);
+    rgbCode.textContent = `rgb(${r},${g},${b})`;
+
+     // Добавляем в историю
+    if (!colorHistory.includes(color)) {
+        colorHistory.unshift(color);
+        if (colorHistory.length > 8) colorHistory.pop();
+        localStorage.setItem('colorHistory', JSON.stringify(colorHistory));
+        updateColorHistory();
+    }
+}
+
+function updateColorHistory() {
+    const historyContainer = document.getElementById('historyColors');
+    if (!historyContainer) return;
+    
+    historyContainer.innerHTML = colorHistory.map(color => `
+        <div class="history-color-item" style="background-color: ${color};" data-color="${color}"></div>
+    `).join('');
+
+    // Добавляем обработчики клика
+    document.querySelectorAll('.history-color-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const color = item.dataset.color;
+            updateColorDisplay(color);
+        });
+    });
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyHexBtn');
+        const originalText = btn.textContent;
+        btn.textContent = 'Скопировано! ✅';
+        setTimeout(() => {
+            btn.textContent = originalText;
+        }, 1500);
+    });
+}
+
+const generateBtn = document.getElementById('generateColorBtn');
+if (generateBtn) {
+    generateBtn.addEventListener('click', () => {
+        const newColor = generateRandomColor();
+        updateColorDisplay(newColor);
+    });
+}
+
+const copyBtn = document.getElementById('copyHexBtn');
+if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+        const hex = document.getElementById('hexCode').textContent;
+        copyToClipboard(hex);
+    });
+}
+
+updateColorHistory();
+updateColorDisplay(generateRandomColor());
