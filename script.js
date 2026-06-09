@@ -686,3 +686,50 @@ if (copyBtn) {
 
 updateColorHistory();
 updateColorDisplay(generateRandomColor());
+
+// ========== ВИДЖЕТ 4: ТРЕКЕР ПРИВЫЧЕК ==========
+function updateHabitProgress() {
+    const checkboxes = document.querySelectorAll('#habitsList input[type="checkbox"]');
+    const total = checkboxes.length;
+    const completed = Array.from(checkboxes).filter(cb => cb.checked).length;
+    const percentage = (completed / total) * 100;
+    
+    const progressBar = document.getElementById('habitProgress');
+    const progressText = document.getElementById('habitProgressText');
+    
+    if (progressBar) progressBar.style.width = `${percentage}%`;
+    if (progressText) progressText.textContent = `${completed}/${total} выполнено`;
+    
+    // Сохраняем прогресс
+    const habitsState = Array.from(checkboxes).map(cb => cb.checked);
+    localStorage.setItem('habitsState', JSON.stringify(habitsState));
+}
+
+// Загрузка сохранённых привычек
+function loadHabitsState() {
+    const savedState = localStorage.getItem('habitsState');
+    if (savedState) {
+        const habitsState = JSON.parse(savedState);
+        const checkboxes = document.querySelectorAll('#habitsList input[type="checkbox"]');
+        checkboxes.forEach((cb, index) => {
+            if (habitsState[index]) cb.checked = habitsState[index];
+        });
+        updateHabitProgress();
+    }
+}
+
+document.querySelectorAll('#habitsList input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', updateHabitProgress);
+});
+
+const resetBtn = document.getElementById('resetHabitsBtn');
+if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+        document.querySelectorAll('#habitsList input[type="checkbox"]').forEach(cb => {
+            cb.checked = false;
+        });
+        updateHabitProgress();
+    });
+}
+
+loadHabitsState();
