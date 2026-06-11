@@ -733,3 +733,50 @@ if (resetBtn) {
 }
 
 loadHabitsState();
+
+// ========== ВИДЖЕТ 5: КАЛЬКУЛЯТОР BMI ==========
+function calculateBMI() {
+    const weight = parseFloat(document.getElementById('weight')?.value);
+    const height = parseFloat(document.getElementById('height')?.value);
+    
+    if (!weight || !height || weight <= 0 || height <= 0) {
+        alert('Пожалуйста, введите корректные значения веса и роста');
+        return;
+    }
+    
+    const heightM = height / 100;
+    const bmi = weight / (heightM * heightM);
+    const bmiValue = bmi.toFixed(1);
+    
+    let category = '';
+    let info = '';
+    
+    if (bmi < 18.5) {
+        category = 'Недостаточный вес';
+        info = 'Рекомендуется набрать несколько килограммов.';
+    } else if (bmi < 25) {
+        category = 'Нормальный вес';
+        info = 'Отличный результат! Продолжайте поддерживать форму.';
+    } else if (bmi < 30) {
+        category = 'Избыточный вес';
+        info = 'Рекомендуется больше двигаться и пересмотреть питание.';
+    } else {
+        category = 'Ожирение';
+        info = 'Рекомендуется проконсультироваться с врачом.';
+    }
+    
+    const resultDiv = document.getElementById('bmiResult');
+    const bmiValueEl = document.getElementById('bmiValue');
+    const bmiCategoryEl = document.getElementById('bmiCategory');
+    const bmiInfoEl = document.getElementById('bmiInfo');
+    
+    if (resultDiv) resultDiv.style.display = 'block';
+    if (bmiValueEl) bmiValueEl.textContent = bmiValue;
+    if (bmiCategoryEl) bmiCategoryEl.textContent = category;
+    if (bmiInfoEl) bmiInfoEl.textContent = info;
+}
+
+const calcBtn = document.getElementById('calculateBmiBtn');
+if (calcBtn) {
+    calcBtn.addEventListener('click', calculateBMI);
+}
