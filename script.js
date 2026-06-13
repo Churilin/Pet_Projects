@@ -780,3 +780,89 @@ const calcBtn = document.getElementById('calculateBmiBtn');
 if (calcBtn) {
     calcBtn.addEventListener('click', calculateBMI);
 }
+
+// ========== ВИДЖЕТ 6: ГЕНЕРАТОР ПАРОЛЕЙ ==========
+function generatePassword() {
+    const length = parseInt(document.getElementById('passwordLength')?.value) || 12;
+    const includeUppercase = document.getElementById('includeUppercase')?.checked;
+    const includeLowercase = document.getElementById('includeLowercase')?.checked;
+    const includeNumbers = document.getElementById('includeNumbers')?.checked;
+    const includeSymbols = document.getElementById('includeSymbols')?.checked;
+    
+    const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+    const numbers = '0123456789';
+    const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+    
+    let chars = '';
+    if (includeUppercase) chars += uppercase;
+    if (includeLowercase) chars += lowercase;
+    if (includeNumbers) chars += numbers;
+    if (includeSymbols) chars += symbols;
+    
+    if (!chars) {
+        alert('Выберите хотя бы один тип символов!');
+        return;
+    }
+    
+    let password = '';
+    for (let i = 0; i < length; i++) {
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    
+    const passwordInput = document.getElementById('generatedPassword');
+    if (passwordInput) passwordInput.value = password;
+    
+    // Оценка сложности пароля
+    checkPasswordStrength(password);
+}
+
+function checkPasswordStrength(password) {
+    let strength = 0;
+    if (password.length >= 12) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[a-z]/.test(password)) strength++;
+    if (/[0-9]/.test(password)) strength++;
+    if (/[^A-Za-z0-9]/.test(password)) strength++;
+    
+    const strengthEl = document.getElementById('passwordStrength');
+    if (!strengthEl) return;
+    
+    if (strength <= 2) {
+        strengthEl.textContent = 'Слабый пароль';
+        strengthEl.style.backgroundColor = '#dc3545';
+        strengthEl.style.color = 'white';
+    } else if (strength <= 4) {
+        strengthEl.textContent = 'Средний пароль';
+        strengthEl.style.backgroundColor = '#ffc107';
+        strengthEl.style.color = '#333';
+    } else {
+        strengthEl.textContent = 'Сильный пароль';
+        strengthEl.style.backgroundColor = '#28a745';
+        strengthEl.style.color = 'white';
+    }
+}
+
+const lengthSlider = document.getElementById('passwordLength');
+const lengthValue = document.getElementById('lengthValue');
+if (lengthSlider && lengthValue) {
+    lengthSlider.addEventListener('input', () => {
+        lengthValue.textContent = lengthSlider.value;
+        generatePassword();
+    });
+}
+
+const generatePwdBtn = document.getElementById('generatePasswordBtn');
+if (generatePwdBtn) {
+    generatePwdBtn.addEventListener('click', generatePassword);
+}
+
+const copyPwdBtn = document.getElementById('copyPasswordBtn');
+if (copyPwdBtn) {
+    copyPwdBtn.addEventListener('click', () => {
+        const pwd = document.getElementById('generatedPassword').value;
+        if (pwd) copyToClipboard(pwd);
+    });
+}
+
+generatePassword();
