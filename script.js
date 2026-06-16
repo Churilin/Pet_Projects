@@ -866,3 +866,36 @@ if (copyPwdBtn) {
 }
 
 generatePassword();
+
+// ========== ВИДЖЕТ 7: СЛУЧАЙНЫЕ ФАКТЫ ==========
+const facts = [
+    "💻 Первый компьютерный вирус был создан в 1983 году.",
+    "🌐 Первый веб-сайт до сих пор доступен в интернете!",
+    "🐍 Python был назван в честь комик-группы Monty Python.",
+    "🍕 Программисты в среднем съедают больше пиццы, чем другие профессионалы.",
+    "🎮 Первая компьютерная игра 'Spacewar!' была создана в 1962 году.",
+    "🔒 Самый распространённый пароль в мире - '123456'.",
+    "📱 В мире больше мобильных устройств, чем людей.",
+    "💾 Ёмкость первого жёсткого диска (1956) составляла 5 МБ и весил он тонну.",
+    "⌨️ Раскладка QWERTY была создана для замедления печати, чтобы механические машинки не заедали.",
+    "🐛 Термин 'bug' (ошибка) появился после того, как мотылёк залетел в компьютер Марка 2."
+];
+
+function getRandomFact() {
+    const randomIndex = Math.floor(Math.random() * facts.length);
+    return facts[randomIndex];
+}
+
+function displayRandomFact() {
+    const factDisplay = document.getElementById('factDisplay');
+    if (factDisplay) {
+        factDisplay.textContent = getRandomFact();
+    }
+}
+
+const newFactBtn = document.getElementById('newFactBtn');
+if (newFactBtn) {
+    newFactBtn.addEventListener('click', displayRandomFact);
+}
+
+displayRandomFact();
