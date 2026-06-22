@@ -7,6 +7,25 @@
     <title>Владислав Чурилин Full-stack developer</title>
 </head>
 <body>
+
+    <!-- Модальное окно авторизации -->
+    <div id="authModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="auth-close">&times;</span>
+            <div id="authContainer">
+                <!-- Форма входа -->
+                <div id="loginForm" class="auth-form">
+                    <h2>Вход в систему</h2>
+                    <div class="form-group">
+                        <input type="email" id="loginEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="loginPassword" placeholder="Пароль" required>
+                    </div>
+                    <button id="loginBtn" class="auth-btn">Войти</button>
+                    <p class="auth-switch">Нет аккаунта? <a href="#" id="switchToRegister">Зарегистрироваться</a></p>
+                    <div id="loginMessage" class="auth-message"></div>
+                </div>
     
 <section id="widgets-showcase">
     <h2>🛠️ Интерактивные виджеты</h2>
