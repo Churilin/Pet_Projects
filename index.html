@@ -26,6 +26,29 @@
                     <p class="auth-switch">Нет аккаунта? <a href="#" id="switchToRegister">Зарегистрироваться</a></p>
                     <div id="loginMessage" class="auth-message"></div>
                 </div>
+
+                <!-- Форма регистрации -->
+                <div id="registerForm" class="auth-form" style="display: none;">
+                    <h2>Регистрация</h2>
+                    <div class="form-group">
+                        <input type="text" id="registerName" placeholder="Имя пользователя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="registerEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="registerPassword" placeholder="Пароль (мин. 6 символов)" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="registerConfirmPassword" placeholder="Подтвердите пароль" required>
+                    </div>
+                    <button id="registerBtn" class="auth-btn">Зарегистрироваться</button>
+                    <p class="auth-switch">Уже есть аккаунт? <a href="#" id="switchToLogin">Войти</a></p>
+                    <div id="registerMessage" class="auth-message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     
 <section id="widgets-showcase">
     <h2>🛠️ Интерактивные виджеты</h2>
