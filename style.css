@@ -1129,3 +1129,40 @@ body.dark-theme #skills ul li {
         font-size: 1.8rem;
     }
 }
+
+/* === СТИЛИ ДЛЯ АВТОРИЗАЦИИ === */
+
+/* Навигация справа */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    right: 2rem;
+    top: 0.5rem;
+}
+
+.auth-toggle-btn {
+    padding: 0.5rem 1.2rem;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.auth-toggle-btn:hover {
+    background-color: white;
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.auth-toggle-btn.logged-in {
+    background-color: #28a745;
+}
+
+.auth-toggle-btn.logged-in:hover {
+    background-color: #dc3545;
+}
