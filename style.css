@@ -1315,3 +1315,27 @@ body.dark-theme #skills ul li {
     background-color: #d4edda;
     color: #155724;
 }
+
+/* Пользовательская информация */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: white;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.user-name {
+    font-weight: 500;
+}
